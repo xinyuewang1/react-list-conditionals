@@ -12,15 +12,17 @@ class App extends Component {
   };
 
   removeCharHandler = idx => {
+    // I'm rewriting the text here all the time, not sure if it's a good practice though.
     let text = this.state.text.split("");
     text.splice(idx, 1);
     text = text.join("");
 
     this.setState({ text: text });
-    console.log(this.state);
+    // console.log(this.state);
   };
 
   render() {
+    // could move this to validation.js.
     let validation = null;
     if (this.state.text.length < 5) {
       validation = <Validation value="Text too short" />;
@@ -37,6 +39,7 @@ class App extends Component {
             <CharComponent
               value={character}
               key={index}
+              // Being saved as anomynous function, will run only being activate.
               onClick={() => this.removeCharHandler(index)}
             />
           );
